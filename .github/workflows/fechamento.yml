@@ -1,0 +1,24 @@
+name: Fechamento B3
+
+on:
+  schedule:
+    - cron: '30 18 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  coleta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: pip install yfinance pandas openpyxl
+
+      - name: Executar coleta
+        run: python coleta_fechamento.py
+
+      - name: Salvar arquivo
+        uses: actions/upload-artifact@v4
+        with:
+          name: fechamento
+          path: Fechamento_Diario.csv
