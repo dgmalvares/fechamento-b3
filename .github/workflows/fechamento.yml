@@ -2,7 +2,7 @@ name: Fechamento B3
 
 on:
   schedule:
-    - cron: '30 18 * * 1-5'
+    - cron: '15 21 * * 1-5'
   workflow_dispatch:
 
 permissions:
